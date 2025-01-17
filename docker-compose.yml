@@ -12,3 +12,10 @@ services:
     ports:
       - "9000:5432"
     restart: unless-stopped
+  mail-dev:
+    container_name: mail-dev
+    image: maildev/maildev
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+    restart: unless-stopped

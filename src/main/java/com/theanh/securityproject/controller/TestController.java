@@ -16,7 +16,7 @@ public class TestController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(
-                        new ApiResponse<Void>(
+                        new ApiResponse<>(
                                 HttpStatus.OK.value(),
                                 true,
                                 null,
