@@ -1,0 +1,14 @@
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgre-data:/data/postgres
+    ports:
+      - "9000:5432"
+    restart: unless-stopped
