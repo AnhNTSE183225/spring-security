@@ -6,7 +6,6 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +13,7 @@ import java.util.Set;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "roles")
-public class Role extends BaseEntity {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,10 @@ public class Role extends BaseEntity {
 
     @Column(unique = true, nullable = false)
     String displayName;
+
+    @Builder.Default
+    @Column(nullable = false)
+    boolean deleted = false;
 
     @ManyToMany(mappedBy = "roles")
     Set<User> users;

@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @Builder
@@ -20,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "users")
-public class User extends BaseEntity implements UserDetails, Principal {
+public class User implements UserDetails, Principal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,21 +28,29 @@ public class User extends BaseEntity implements UserDetails, Principal {
     @Column(nullable = false, unique = true)
     String email;
 
+    @Column
     String firstName;
 
     @Column(nullable = false)
     String lastName;
 
+    @Column
     LocalDate dateOfBirth;
 
     @Column(nullable = false)
     String password;
 
     @Builder.Default
+    @Column
     boolean nonLocked = true;
 
     @Builder.Default
+    @Column
     boolean enabled = true;
+
+    @Builder.Default
+    @Column
+    boolean deleted = false;
 
     @ManyToMany(fetch = FetchType.EAGER)
     Set<Role> roles;
