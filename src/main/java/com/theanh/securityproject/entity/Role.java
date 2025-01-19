@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,5 +31,5 @@ public class Role {
     boolean deleted = false;
 
     @ManyToMany(mappedBy = "roles")
-    Set<User> users;
+    List<User> users;
 }

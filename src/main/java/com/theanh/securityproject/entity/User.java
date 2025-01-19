@@ -9,8 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
@@ -53,7 +52,11 @@ public class User implements UserDetails, Principal {
     boolean deleted = false;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    Set<Role> roles;
+    List<Role> roles = new ArrayList<>();
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
