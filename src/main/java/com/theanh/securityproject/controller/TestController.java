@@ -16,12 +16,12 @@ public class TestController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(
-                        new ApiResponse<>(
-                                HttpStatus.OK.value(),
-                                true,
-                                null,
-                                "Message received"
-                        )
+                        ApiResponse.<Void>builder()
+                                .statusCode(HttpStatus.OK.value())
+                                .success(true)
+                                .data(null)
+                                .message("Message received")
+                                .build()
                 );
     }
 
