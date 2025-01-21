@@ -44,15 +44,6 @@ jobs:
           IMAGE_TAG=ghcr.io/anhntse183225/my-spring-boot-app:latest
           docker push $IMAGE_TAG  # Push the image to GHCR
 
-      # Step 5.5: Copy the f*cking docker-compose.yml
-      - name: Set up SSH and copy docker-compose.yml to VPS
-        run: |
-            # Install sshpass
-            sudo apt-get install -y sshpass
-            
-            # Copy docker-compose.yml to the VPS
-            sshpass -p ${{ secrets.VPS_PASSWORD }} scp -o StrictHostKeyChecking=no docker-compose.yml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }}:/home/theanh/cicd/
-
         # Step 6: SSH into VPS and deploy
       - name: SSH into VPS and deploy
         uses: appleboy/ssh-action@v0.1.5
