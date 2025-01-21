@@ -1,6 +1,6 @@
 services:
   spring-boot:
-    image: ghcr.io/AnhNTSE183225/my-spring-boot-app:latest
+    image: ghcr.io/anhntse183225/my-spring-boot-app:latest
     build:
       context: .
       dockerfile: Dockerfile
