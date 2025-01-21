@@ -1,4 +1,17 @@
 services:
+  spring-boot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./spring-boot-data:/app/logs
+    environment:
+      JWT_SECRET_KEY: fca579b54ebada72e31490a43cac0fa5b624655c8170519b861eb3f7221f4e57
+    depends_on:
+      - postgresql
+    restart: unless-stopped
   postgresql:
     container_name: postgresql
     image: postgres
@@ -11,4 +24,7 @@ services:
       - ./postgre-data:/data/postgres
     ports:
       - "9000:5432"
+    healthcheck:
+      test: pg_isready -h localhost -U $$POSTGRES_USER
+      interval: 2s
     restart: unless-stopped

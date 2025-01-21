@@ -3,6 +3,7 @@ package com.theanh.securityproject.controller;
 import com.theanh.securityproject.dto.UserDto;
 import com.theanh.securityproject.dto.response.ApiResponse;
 import com.theanh.securityproject.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/test")
 @RequiredArgsConstructor
+@Tag(name = "Testing")
 public class TestController {
 
     private final UserService userService;

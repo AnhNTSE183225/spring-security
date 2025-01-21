@@ -39,16 +39,16 @@ public class User implements UserDetails, Principal {
     @Column(nullable = false)
     String password;
 
-    @Builder.Default
     @Column
+    @Builder.Default
     boolean nonLocked = true;
 
-    @Builder.Default
     @Column
+    @Builder.Default
     boolean enabled = true;
 
-    @Builder.Default
     @Column
+    @Builder.Default
     boolean deleted = false;
 
     @ManyToMany(fetch = FetchType.EAGER)
