@@ -42,7 +42,6 @@ jobs:
       - name: Tag and push Docker image to GHCR
         run: |
           IMAGE_TAG=ghcr.io/anhntse183225/my-spring-boot-app:latest
-          docker tag spring-boot $IMAGE_TAG  # Tag the image with the GHCR registry path
           docker push $IMAGE_TAG  # Push the image to GHCR
 
       # Step 6: SSH into VPS and deploy
