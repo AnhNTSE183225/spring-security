@@ -26,6 +26,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}  # Use your GitHub PAT for authentication
           registry: ghcr.io
 
+      # Step 3.5: Install docker-compose
+      - name: Install Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/v2.19.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version  # Verify the installation
+
       # Step 4: Build Docker images
       - name: Build Docker image
         run: |
