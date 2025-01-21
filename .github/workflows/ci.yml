@@ -24,6 +24,7 @@ jobs:
         with:
           username: ${{ github.actor }}  # Use the GitHub actor as username
           password: ${{ secrets.GITHUB_TOKEN }}  # Use your GitHub PAT for authentication
+          registry: ghcr.io
 
       # Step 4: Build Docker images
       - name: Build Docker image
