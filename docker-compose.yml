@@ -11,7 +11,8 @@ services:
     environment:
       JWT_SECRET_KEY: fca579b54ebada72e31490a43cac0fa5b624655c8170519b861eb3f7221f4e57
     depends_on:
-      - postgresql
+      postgresql:
+        condition: service_healthy
     restart: unless-stopped
   postgresql:
     container_name: postgresql
