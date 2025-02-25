@@ -1,13 +1,15 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgresql:5432/postgres
-    username: postgres
-    password: postgres
+    url: jdbc:mysql://localhost:3306/security
+    username: root
+    password: 123456789
   jpa:
     hibernate:
       ddl-auto: update
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+    database: mysql
+  #    database: postgresql
+  #    database-platform: org.hibernate.dialect.PostgreSQLDialect
   servlet:
     multipart:
       max-file-size: 50MB
@@ -22,7 +24,7 @@ springdoc:
 application:
   security:
     jwt:
-      secret-key: ${JWT_SECRET_KEY}
+      secret-key: ${JWT_SECRET_KEY:fca579b54ebada72e31490a43cac0fa5b624655c8170519b861eb3f7221f4e57}
       expiration: 8640000
 logging:
   level:
